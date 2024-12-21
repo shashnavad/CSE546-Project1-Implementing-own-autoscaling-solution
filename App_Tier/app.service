@@ -1,0 +1,13 @@
+[Unit]
+Description=Run app.py on startup
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu
+ExecStart=/bin/bash -c 'source /home/ubuntu/pytorch-env/bin/activate && python3 /home/ubuntu/app.py'
+Restart=always
+Environment=PATH=/home/ubuntu/pytorch-env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+[Install]
+WantedBy=multi-user.target
